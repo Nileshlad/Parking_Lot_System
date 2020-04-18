@@ -23,9 +23,10 @@ public class ParkingLotSystem {
         return false;
     }
 
+    public boolean isVehicleUnParked(Object vehicle) {
+               return true;
+    }
     public static void main(String[] args) {
 
     }
-
-
 }
