@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ParkingLotSystemTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-18T07:43:49" hostname="blackhawkkk" time="0.003">
+<testsuite name="ParkingLotSystemTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-20T05:18:49" hostname="blackhawkkk" time="0.003">
   <properties/>
-  <testcase name="givenANullVehicle_WhenUnParked_ShouldThrowException" classname="ParkingLotSystemTest" time="0.003"/>
+  <testcase name="givenAVehicle_WhenAlreadyParkedAndCheckIfUnPark_ShouldReturnFalse" classname="ParkingLotSystemTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
