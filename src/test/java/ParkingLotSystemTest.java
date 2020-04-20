@@ -1,5 +1,6 @@
 import com.exception.ParkingLotException;
 import com.parkinglotsystem.ParkingLotSystem;
+import com.parkinglotsystem.Vehicle;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -61,4 +62,20 @@ public class ParkingLotSystemTest {
         Assert.assertEquals(false, isUnParked);
     }
 
+    //TEST CASE 3.3
+    @Test
+    public void givenAVehicles_WhenParkingLotIsFull_ShouldThrowException() throws ParkingLotException {
+        try {
+            vehicle = new Vehicle("1", "car");
+            parkingLotSystem.park(vehicle);
+            Vehicle vehicle1 = new Vehicle("2", "car1");
+            parkingLotSystem.park(vehicle1);
+            Vehicle vehicle2 = new Vehicle("3", "car2");
+            parkingLotSystem.park(vehicle2);
+            boolean isParked = parkingLotSystem.isVehicleParked(vehicle);
+            Assert.assertEquals(true, isParked);
+        } catch (ParkingLotException e) {
+            Assert.assertEquals(ParkingLotException.ExceptionType.PARKING_LOT_IS_FULL, e.type);
+        }
+    }
 }

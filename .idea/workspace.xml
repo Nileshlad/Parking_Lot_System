@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0edaba8d-48a2-4f40-b05e-c2c39e6de2f6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/parkinglotsystem/Vehicle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -13,22 +14,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/exception/ParkingLotException$ExceptionType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/exception/ParkingLotException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/parkinglotsystem/ParkingLotSystem.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/test/ParkingLotSystemTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/test/ParkingLotSystemTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/ParkingLotSystemTest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/base-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/js/report.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-ParkingLotSystemTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/exception/ParkingLotException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/exception/ParkingLotException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/parkinglotsystem/ParkingLotSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/parkinglotsystem/ParkingLotSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/ParkingLotSystemTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/ParkingLotSystemTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-ParkingLotSystemTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-ParkingLotSystemTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ParkingLotSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ParkingLotSystemTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -87,7 +78,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.ParkingLotSystemTest.givenANullVehicle_WhenUnParked_ShouldThrowException">
+  <component name="RunManager" selected="Gradle.ParkingLotSystemTest.givenAVehicles_WhenParkingLotIsFull_ShouldThrowException">
     <configuration name="ParkingLotSystemTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -148,26 +139,6 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ParkingLotSystemTest.givenAVehicle_WhenParked_ShouldReturnTrue" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenAVehicle_WhenParked_ShouldReturnTrue&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanTest" />
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="ParkingLotSystemTest.givenAVehicle_WhenUnParked_ReturnTrue" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -188,13 +159,33 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="ParkingLotSystemTest.givenAVehicles_WhenParkingLotIsFull_ShouldThrowException" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenAVehicles_WhenParkingLotIsFull_ShouldThrowException&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ParkingLotSystemTest.givenANullVehicle_WhenUnParked_ShouldThrowException" />
+        <item itemvalue="Gradle.ParkingLotSystemTest.givenAVehicles_WhenParkingLotIsFull_ShouldThrowException" />
         <item itemvalue="Gradle.ParkingLotSystemTest.givenAVehicle_WhenAlreadyParkedAndCheckIfUnPark_ShouldReturnFalse" />
-        <item itemvalue="Gradle.ParkingLotSystemTest.givenAVehicle_WhenUnParked_ReturnTrue" />
-        <item itemvalue="Gradle.ParkingLotSystemTest.givenAVehicle_WhenParked_ShouldReturnTrue" />
         <item itemvalue="Gradle.ParkingLotSystemTest" />
+        <item itemvalue="Gradle.ParkingLotSystemTest.givenANullVehicle_WhenUnParked_ShouldThrowException" />
+        <item itemvalue="Gradle.ParkingLotSystemTest.givenAVehicle_WhenUnParked_ReturnTrue" />
       </list>
     </recent_temporary>
   </component>
