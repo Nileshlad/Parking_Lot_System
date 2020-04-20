@@ -24,25 +24,29 @@ public class ParkingLotSystemTest {
     //TEST CASE 1.1 AND USE CASE-1
     @Test
     public void givenAVehicle_WhenParked_ShouldReturnTrue() {
-        ParkingLotSystem parkingLotSystem = new ParkingLotSystem();
-        boolean isParked = parkingLotSystem.park(new Object());
-        Assert.assertTrue(isParked);
+        vehicle = new Vehicle("1", "car");
+        parkingLotSystem.park(vehicle);
+        boolean isParked = parkingLotSystem.isVehicleParked(vehicle);
+        Assert.assertEquals(true, isParked);
     }
 
     //TEST CASE 1.2 AND USE CASE-2
     @Test
     public void givenAVehicle_WhenUnParked_ShouldReturnFalse() {
-        ParkingLotSystem parkingLotSystem = new ParkingLotSystem();
-        parkingLotSystem.park(new Object());
-        boolean isUnParked = parkingLotSystem.unPark(new Object());
-        Assert.assertFalse(isUnParked);
+        vehicle = new Vehicle("1", "car");
+        Vehicle vehicle1 = new Vehicle("2", "bus");
+        parkingLotSystem.park(vehicle);
+        boolean isParked = parkingLotSystem.isVehicleParked(vehicle1);
+        Assert.assertEquals(false, isParked);
     }
 
     //TEST CASE 1.3 EQUAL METHOD USE CASE-2
     @Test
     public void givenAVehicle_WhenUnParked_ReturnTrue() {
+        vehicle = new Vehicle("1", "car");
         parkingLotSystem.park(vehicle);
-        boolean isUnParked = parkingLotSystem.unPark(vehicle);
+        parkingLotSystem.unPark(vehicle);
+        boolean isUnParked = parkingLotSystem.isVehicleUnParked(vehicle);
         Assert.assertEquals(true, isUnParked);
     }
 
@@ -50,18 +54,20 @@ public class ParkingLotSystemTest {
     @Test
     public void givenANullVehicle_WhenUnParked_ShouldThrowException() throws ParkingLotException {
         try {
+            vehicle = new Vehicle("1", "car");
             parkingLotSystem.park(vehicle);
             parkingLotSystem.unPark(null);
             boolean isUnParked = parkingLotSystem.isVehicleUnParked(vehicle);
             Assert.assertEquals(true, isUnParked);
         } catch (ParkingLotException e) {
-            Assert.assertEquals(ParkingLotException.ExceptionType.NO_SUCH_A_VEHICLE,e.type);
+            Assert.assertEquals(ParkingLotException.ExceptionType.NO_SUCH_A_VEHICLE, e.type);
         }
     }
 
     //TEST CASE 3.2
     @Test
     public void givenAVehicle_WhenAlreadyParkedAndCheckIfUnPark_ShouldReturnFalse() throws ParkingLotException {
+        vehicle = new Vehicle("1", "car");
         parkingLotSystem.park(vehicle);
         boolean isUnParked = parkingLotSystem.isVehicleUnParked(vehicle);
         Assert.assertEquals(false, isUnParked);

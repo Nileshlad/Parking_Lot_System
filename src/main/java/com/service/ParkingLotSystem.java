@@ -38,7 +38,7 @@ public class ParkingLotSystem {
         if (parkingLot.size() < PARKING_LOT_CAPACITY) {
             parkingLot.put(vehicle.getVehicleId(), vehicle);
         } else if (parkingLot.size() == PARKING_LOT_CAPACITY) {
-            throw new ParkingLotException(ParkingLotException.ExceptionType.PARKING_LOT_IS_FULL, "Parking lot is full");
+            throw new ParkingLotException("Parking lot is full", ParkingLotException.ExceptionType.PARKING_LOT_IS_FULL);
         }
         if (parkingLot.size() == PARKING_LOT_CAPACITY)
             setStatus("Full");
@@ -47,7 +47,7 @@ public class ParkingLotSystem {
     //unparked method
     public void unPark(Vehicle vehicle) throws ParkingLotException {
         if (vehicle == null)
-            throw new ParkingLotException(ParkingLotException.ExceptionType.NO_SUCH_A_VEHICLE, "No such a vehicle");
+            throw new ParkingLotException("No such a vehicle", ParkingLotException.ExceptionType.NO_SUCH_A_VEHICLE);
         else if (parkingLot.containsKey(vehicle.getVehicleId()))
             parkingLot.remove(vehicle.getVehicleId());
         if (parkingLot.size() < PARKING_LOT_CAPACITY)
