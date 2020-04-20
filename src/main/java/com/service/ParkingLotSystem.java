@@ -1,6 +1,8 @@
 package com.service;
 
+import com.Attendant;
 import com.IObservable;
+import com.Owner;
 import com.exception.ParkingLotException;
 import com.model.Vehicle;
 
@@ -13,13 +15,16 @@ public class ParkingLotSystem {
     private String IS_Full;
     private int PARKING_LOT_CAPACITY = 2;
 
+    Owner owner = null;
+    Attendant attendant = null;
+
     HashMap<String, Object> parkingLot = new HashMap();
     private List<IObservable> observableList = new ArrayList<>();
 
-    //Defoult constructor
-    public ParkingLotSystem() {
+    public ParkingLotSystem(Owner owner, Attendant attendant) {
+        this.owner = owner;
+        this.attendant = attendant;
     }
-
     //observe method use case-5
     public void addObserver(IObservable iObservable) {
         this.observableList.add(iObservable);
