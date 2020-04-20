@@ -89,4 +89,18 @@ public class ParkingLotSystemTest {
             Assert.assertEquals(ParkingLotException.ExceptionType.PARKING_LOT_IS_FULL, e.type);
         }
     }
+
+    //TEST CASE 4.1 AND USE CASE-4
+    @Test
+    public void givenAVehicles_WhenParkingLotIsFull_ShouldInformToAirportSecurityAndOwner() throws ParkingLotException {
+        parkingLotSystem.addObserver(owner);
+        parkingLotSystem.addObserver(airportSecurity);
+        vehicle = new Vehicle("1", "car");
+        parkingLotSystem.park(vehicle);
+        Vehicle vehicle1 = new Vehicle("2", "car1");
+        parkingLotSystem.park(vehicle1);
+        Assert.assertEquals("Full", airportSecurity.getParkingLotStatus());
+        Assert.assertEquals("Full", owner.getParkingLotStatus());
+    }
+
 }
