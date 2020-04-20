@@ -114,4 +114,16 @@ public class ParkingLotSystemTest {
         Assert.assertEquals("Full", owner.getParkingLotStatus());
     }
 
+    //TEST CASE 5.2
+    @Test
+    public void givenAVehicles_WhenParkingLotHasSpaceAgain_ShouldInformToParkingLotOwner() throws ParkingLotException {
+        parkingLotSystem.addObserver(owner);
+        vehicle = new Vehicle("1", "car");
+        parkingLotSystem.park(vehicle);
+        Vehicle vehicle1 = new Vehicle("2", "car1");
+        parkingLotSystem.park(vehicle1);
+        Assert.assertEquals("Full", owner.getParkingLotStatus());
+        parkingLotSystem.unPark(vehicle1);
+        Assert.assertEquals("Have Space", owner.getParkingLotStatus());
+    }
 }
