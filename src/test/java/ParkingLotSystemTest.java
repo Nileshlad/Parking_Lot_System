@@ -1,19 +1,24 @@
+import com.AirportSecurity;
+import com.Owner;
 import com.exception.ParkingLotException;
-import com.parkinglotsystem.ParkingLotSystem;
-import com.parkinglotsystem.Vehicle;
+import com.model.Vehicle;
+import com.service.ParkingLotSystem;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class ParkingLotSystemTest {
 
-    Object vehicle = null;
     ParkingLotSystem parkingLotSystem = null;
+    Vehicle vehicle = null;
+    Owner owner = null;
+    AirportSecurity airportSecurity = null;
 
     @Before
     public void setUp() throws Exception {
-        vehicle = new Object();
         parkingLotSystem = new ParkingLotSystem();
+        owner = new Owner();
+        airportSecurity = new AirportSecurity();
     }
 
     //TEST CASE 1.1 AND USE CASE-1

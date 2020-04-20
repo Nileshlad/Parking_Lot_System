@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ParkingLotSystemTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-20T05:23:12" hostname="blackhawkkk" time="0.005">
-  <properties/>
-  <testcase name="givenAVehicles_WhenParkingLotIsFull_ShouldThrowException" classname="ParkingLotSystemTest" time="0.005"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
