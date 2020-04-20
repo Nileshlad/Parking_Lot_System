@@ -1,4 +1,5 @@
 import com.AirportSecurity;
+import com.Attendant;
 import com.Owner;
 import com.exception.ParkingLotException;
 import com.model.Vehicle;
@@ -7,18 +8,23 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.LinkedHashMap;
+
 public class ParkingLotSystemTest {
 
+    LinkedHashMap<String, Vehicle> parkingLot = null;
     ParkingLotSystem parkingLotSystem = null;
     Vehicle vehicle = null;
     Owner owner = null;
     AirportSecurity airportSecurity = null;
+    Attendant attendant = null;
 
     @Before
-    public void setUp() throws Exception {
-        parkingLotSystem = new ParkingLotSystem();
+    public void setUp() {
         owner = new Owner();
         airportSecurity = new AirportSecurity();
+        attendant = new Attendant();
+        parkingLot = new LinkedHashMap();
     }
 
     //TEST CASE 1.1 AND USE CASE-1
@@ -139,4 +145,21 @@ public class ParkingLotSystemTest {
         parkingLotSystem.unPark(vehicle);
         System.out.println(parkingLotSystem.isVehicleParked(vehicle));
     }
+
+    //TEST CASE 7.1 AND USE CASE-7
+    @Test
+    public void givenVehicle_WhenWantToFindCar_ShouldNumberInParkingLot() throws ParkingLotException {
+        parkingLotSystem = new ParkingLotSystem(owner, attendant, parkingLot);
+        parkingLotSystem.createParkingLot();
+        parkingLotSystem.addObserver(owner);
+        int numberOfCars = 9;
+        for (int index = 0; index < numberOfCars; index++) {
+            Vehicle vehicle = new Vehicle(Integer.toString(index), "BMW");
+            parkingLotSystem.park(vehicle);
+        }
+        Vehicle vehicle2 = new Vehicle("55", "Thur");
+        parkingLotSystem.park(vehicle2);
+        int numberInParkingLot = parkingLotSystem.getMyCarParkingNumber(vehicle2);
+        Assert.assertEquals(9, numberInParkingLot);
     }
+}

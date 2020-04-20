@@ -6,25 +6,31 @@ import com.Owner;
 import com.exception.ParkingLotException;
 import com.model.Vehicle;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class ParkingLotSystem {
     //constant
     private String IS_Full;
-    private int PARKING_LOT_CAPACITY = 2;
-
+    private int PARKING_LOT_CAPACITY = 10;
+    private int numberOfSlot = 1;
+    
+    LinkedHashMap<String, Vehicle> parkingLot = null;
+    private List<IObservable> observableList = new ArrayList<>();
     Owner owner = null;
     Attendant attendant = null;
 
-    HashMap<String, Object> parkingLot = new HashMap();
-    private List<IObservable> observableList = new ArrayList<>();
+    //
+    public ParkingLotSystem(Owner owner, Attendant attendant, LinkedHashMap parkingLot) {
+        this.owner = owner;
+        this.attendant = attendant;
+        this.parkingLot = parkingLot;
+    }
 
-    public ParkingLotSystem(Owner owner, Attendant attendant) {
+    public ParkingLotSystem(Owner owner, Object attendan) {
         this.owner = owner;
         this.attendant = attendant;
     }
+
     //observe method use case-5
     public void addObserver(IObservable iObservable) {
         this.observableList.add(iObservable);
@@ -72,5 +78,39 @@ public class ParkingLotSystem {
         if (!parkingLot.containsKey(vehicle.getVehicleId()))
             return true;
         return false;
+    }
+
+    public void createParkingLot() {
+        int counter = 1, index = 0, slot = 1, length = 0, slotCapacity = 0;
+        while (index != PARKING_LOT_CAPACITY) {
+            slotCapacity = PARKING_LOT_CAPACITY / numberOfSlot;
+            if (PARKING_LOT_CAPACITY % numberOfSlot != 0)
+                slotCapacity += 1;
+            if (counter == slotCapacity + 1) {
+                counter = 1;
+                slot++;
+            }
+            String number1 = Integer.toString(counter);
+            length = number1.length();
+            if (length == 1) {
+                number1 = "0" + number1;
+            }
+            String key = "P" + Integer.toString(slot) + number1;
+            parkingLot.put(key, null);
+            index++;
+            counter++;
+        }
+    }
+
+    public int getMyCarParkingNumber(Vehicle vehicle) {
+        Set<String> keys = parkingLot.keySet();
+        List<String> listKeys = new ArrayList<String>(keys);
+        Iterator<String> itr = parkingLot.keySet().iterator();
+        while (itr.hasNext()) {
+            String key = itr.next();
+            if (parkingLot.get(key) == vehicle)
+                return listKeys.indexOf(key);
+        }
+        return 0;
     }
 }
