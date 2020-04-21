@@ -10,14 +10,16 @@ import java.util.*;
 
 public class ParkingLotSystem {
     //constant
-    private String IS_Full;
     private int PARKING_LOT_CAPACITY = 10;
+
+    //variable
+    private String is_full;
     private int numberOfSlot = 1;
     
     LinkedHashMap<String, Vehicle> parkingLot = null;
     private List<IObservable> observableList = new ArrayList<>();
     Owner owner = null;
-    Attendant attendant = null;
+    Object attendant = null;
 
     //
     public ParkingLotSystem(Owner owner, Attendant attendant, LinkedHashMap parkingLot) {
@@ -26,7 +28,7 @@ public class ParkingLotSystem {
         this.parkingLot = parkingLot;
     }
 
-    public ParkingLotSystem(Owner owner, Object attendan) {
+    public ParkingLotSystem(Owner owner, Object attendant) {
         this.owner = owner;
         this.attendant = attendant;
     }
@@ -38,9 +40,9 @@ public class ParkingLotSystem {
 
     //set status
     public void setStatus(String isFull) {
-        this.IS_Full = isFull;
+        this.is_full = is_full;
         for (IObservable observable : this.observableList) {
-            observable.update(this.IS_Full);
+            observable.update(this.is_full);
         }
     }
 

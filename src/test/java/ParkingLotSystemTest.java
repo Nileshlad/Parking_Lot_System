@@ -162,4 +162,9 @@ public class ParkingLotSystemTest {
         int numberInParkingLot = parkingLotSystem.getMyCarParkingNumber(vehicle2);
         Assert.assertEquals(9, numberInParkingLot);
     }
+
+   //TEST CASE 9.1
+
+
+
 }
