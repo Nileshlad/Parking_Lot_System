@@ -11,6 +11,7 @@ public class Vehicle {
 
     }
 
+    //Overloading vehicle method and give the vehicle charges
     public Vehicle(String id, String name,int hour) {
         this.vehicleId = id;
         this.name = name;

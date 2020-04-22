@@ -163,9 +163,9 @@ public class ParkingLotSystemTest {
         Assert.assertEquals(9, numberInParkingLot);
     }
 
-   //TEST CASE 8.1 and ues case-8 parking charges
+    //TEST CASE 8.1 and ues case-8 parking charges
     @Test
-    public void givenVehicle_WhenPark_ShouldReturnCharges() throws ParkingLotException {
+    public void givenVehicle_WhenPark_ShouldReturnChargesTrue() throws ParkingLotException {
         parkingLotSystem.addObserver(owner);
         Vehicle vehicle = new Vehicle("1", "Car1", 4);
         parkingLotSystem.park(vehicle);

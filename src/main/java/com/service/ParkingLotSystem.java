@@ -10,12 +10,13 @@ import java.util.*;
 
 public class ParkingLotSystem {
     //constant
-    private int PARKING_LOT_CAPACITY = 10;
+     int PARKING_LOT_CAPACITY = 2;
+     int CHARGES_PER_HOUR = 10;
 
     //variable
     private String is_full;
     private int numberOfSlot = 1;
-    public int chargePerHour = 10;
+
 
 
     LinkedHashMap<String, Vehicle> parkingLot = null;
@@ -123,7 +124,7 @@ public class ParkingLotSystem {
 
     //METHOD FOR CHARGE PARKING VEHICLE
     public int chargeVehicle(Vehicle vehicle) {
-        int totalCharges = vehicle.getHour() * chargePerHour;
+        int totalCharges = vehicle.getHour() * CHARGES_PER_HOUR;
         return totalCharges;
     }
 }
