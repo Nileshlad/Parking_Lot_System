@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0edaba8d-48a2-4f40-b05e-c2c39e6de2f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/Vehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/ParkingLotSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/ParkingLotSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ParkingLotSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ParkingLotSystemTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,33 +64,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.ParkingLotSystemTest.givenVehicle_WhenWantToFindCar_ShouldNumberInParkingLot">
+  <component name="RunManager" selected="Gradle.ParkingLotSystemTest.givenVehicle_WhenPark_ShouldReturnCharges">
     <configuration name="ParkingLotSystemTest.givenAVehicles_WhenParkingLotHasSpaceAgain_ShouldInformToParkingLotOwner" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenAVehicles_WhenParkingLotHasSpaceAgain_ShouldInformToParkingLotOwner&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":cleanTest" />
-            <option value=":test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ParkingLotSystemTest.givenAVehicles_WhenParkingLotIsFull_ShouldInformToAirportSecurityAndOwner" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenAVehicles_WhenParkingLotIsFull_ShouldInformToAirportSecurityAndOwner&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -143,6 +125,26 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="ParkingLotSystemTest.givenVehicle_WhenPark_ShouldReturnCharges" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenVehicle_WhenPark_ShouldReturnCharges&quot; --debug" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ParkingLotSystemTest.givenVehicle_WhenWantToFindCar_ShouldNumberInParkingLot" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -165,11 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ParkingLotSystemTest.givenVehicle_WhenPark_ShouldReturnCharges" />
         <item itemvalue="Gradle.ParkingLotSystemTest.givenVehicle_WhenWantToFindCar_ShouldNumberInParkingLot" />
         <item itemvalue="Gradle.ParkingLotSystemTest.givenVehicle_WhenOwnerWantAttendant_ShouldParkTheCar" />
         <item itemvalue="Gradle.ParkingLotSystemTest.givenAVehicles_WhenParkingLotHasSpaceAgain_ShouldInformToParkingLotOwner" />
         <item itemvalue="Gradle.ParkingLotSystemTest.givenAVehicles_WhenParkingLotIsFull_ShouldInformToOwner" />
-        <item itemvalue="Gradle.ParkingLotSystemTest.givenAVehicles_WhenParkingLotIsFull_ShouldInformToAirportSecurityAndOwner" />
       </list>
     </recent_temporary>
   </component>

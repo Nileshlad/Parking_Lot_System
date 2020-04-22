@@ -79,7 +79,7 @@ public class ParkingLotSystemTest {
         Assert.assertEquals(false, isUnParked);
     }
 
-    //TEST CASE 3.3
+    //TEST CASE 3.3 and throw the exception
     @Test
     public void givenAVehicles_WhenParkingLotIsFull_ShouldThrowException() throws ParkingLotException {
         try {
@@ -163,8 +163,13 @@ public class ParkingLotSystemTest {
         Assert.assertEquals(9, numberInParkingLot);
     }
 
-   //TEST CASE 9.1
-
-
-
+   //TEST CASE 8.1 and ues case-8 parking charges
+    @Test
+    public void givenVehicle_WhenPark_ShouldReturnCharges() throws ParkingLotException {
+        parkingLotSystem.addObserver(owner);
+        Vehicle vehicle = new Vehicle("1", "Car1", 4);
+        parkingLotSystem.park(vehicle);
+        int parkingCharges = parkingLotSystem.chargeVehicle(vehicle);
+        Assert.assertEquals(40, parkingCharges);
+    }
 }

@@ -15,13 +15,15 @@ public class ParkingLotSystem {
     //variable
     private String is_full;
     private int numberOfSlot = 1;
-    
+    public int chargePerHour = 10;
+
+
     LinkedHashMap<String, Vehicle> parkingLot = null;
     private List<IObservable> observableList = new ArrayList<>();
     Owner owner = null;
     Object attendant = null;
 
-    //
+    //constructor
     public ParkingLotSystem(Owner owner, Attendant attendant, LinkedHashMap parkingLot) {
         this.owner = owner;
         this.attendant = attendant;
@@ -51,6 +53,7 @@ public class ParkingLotSystem {
     public void park(Vehicle vehicle) throws ParkingLotException {
         if (parkingLot.size() < PARKING_LOT_CAPACITY) {
             parkingLot.put(vehicle.getVehicleId(), vehicle);
+            chargeVehicle(vehicle);
         } else if (parkingLot.size() == PARKING_LOT_CAPACITY) {
             throw new ParkingLotException("Parking lot is full", ParkingLotException.ExceptionType.PARKING_LOT_IS_FULL);
         }
@@ -82,6 +85,7 @@ public class ParkingLotSystem {
         return false;
     }
 
+    //create parking lot
     public void createParkingLot() {
         int counter = 1, index = 0, slot = 1, length = 0, slotCapacity = 0;
         while (index != PARKING_LOT_CAPACITY) {
@@ -104,6 +108,7 @@ public class ParkingLotSystem {
         }
     }
 
+    //get my car parking number method
     public int getMyCarParkingNumber(Vehicle vehicle) {
         Set<String> keys = parkingLot.keySet();
         List<String> listKeys = new ArrayList<String>(keys);
@@ -114,5 +119,11 @@ public class ParkingLotSystem {
                 return listKeys.indexOf(key);
         }
         return 0;
+    }
+
+    //METHOD FOR CHARGE PARKING VEHICLE
+    public int chargeVehicle(Vehicle vehicle) {
+        int totalCharges = vehicle.getHour() * chargePerHour;
+        return totalCharges;
     }
 }
