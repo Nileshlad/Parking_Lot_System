@@ -1,4 +1,4 @@
-package com.model;
+package parkinglotsystem.model;
 
 public class Vehicle {
     private int hour;

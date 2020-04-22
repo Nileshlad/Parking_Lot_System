@@ -1,4 +1,4 @@
-package com;
+package parkinglotsystem.observer;
 
 public class Owner implements IObservable {
     private String parkingLotStatus;

@@ -1,9 +1,9 @@
-import com.AirportSecurity;
-import com.Attendant;
-import com.Owner;
-import com.exception.ParkingLotException;
-import com.model.Vehicle;
-import com.service.ParkingLotSystem;
+import parkinglotsystem.observer.AirportSecurity;
+import parkinglotsystem.service.Attendant;
+import parkinglotsystem.observer.Owner;
+import parkinglotsystem.exception.ParkingLotException;
+import parkinglotsystem.model.Vehicle;
+import parkinglotsystem.service.ParkingLotSystem;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,18 +12,20 @@ import java.util.LinkedHashMap;
 
 public class ParkingLotSystemTest {
 
-    LinkedHashMap<String, Vehicle> parkingLot = null;
+    LinkedHashMap parkingLot = null;
     ParkingLotSystem parkingLotSystem = null;
     Vehicle vehicle = null;
     Owner owner = null;
     AirportSecurity airportSecurity = null;
     Attendant attendant = null;
+    LinkedHashMap<String, Integer> availableLot = null;
+
 
     @Before
     public void setUp() {
         owner = new Owner();
         airportSecurity = new AirportSecurity();
-        attendant = new Attendant();
+        attendant = new Attendant(parkingLotSystem);
         parkingLot = new LinkedHashMap();
     }
 
@@ -172,4 +174,5 @@ public class ParkingLotSystemTest {
         int parkingCharges = parkingLotSystem.chargeVehicle(vehicle);
         Assert.assertEquals(40, parkingCharges);
     }
+
 }

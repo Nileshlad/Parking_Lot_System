@@ -1,10 +1,9 @@
-package com.service;
+package parkinglotsystem.service;
 
-import com.Attendant;
-import com.IObservable;
-import com.Owner;
-import com.exception.ParkingLotException;
-import com.model.Vehicle;
+import parkinglotsystem.observer.IObservable;
+import parkinglotsystem.observer.Owner;
+import parkinglotsystem.exception.ParkingLotException;
+import parkinglotsystem.model.Vehicle;
 
 import java.util.*;
 
@@ -31,10 +30,13 @@ public class ParkingLotSystem {
         this.parkingLot = parkingLot;
     }
 
+    //overloading method as owner and attendant
     public ParkingLotSystem(Owner owner, Object attendant) {
         this.owner = owner;
         this.attendant = attendant;
-    }
+   }
+
+
 
     //observe method use case-5
     public void addObserver(IObservable iObservable) {
@@ -48,7 +50,6 @@ public class ParkingLotSystem {
             observable.update(this.is_full);
         }
     }
-
 
     //park method
     public void park(Vehicle vehicle) throws ParkingLotException {
@@ -127,4 +128,6 @@ public class ParkingLotSystem {
         int totalCharges = vehicle.getHour() * CHARGES_PER_HOUR;
         return totalCharges;
     }
+
+
 }

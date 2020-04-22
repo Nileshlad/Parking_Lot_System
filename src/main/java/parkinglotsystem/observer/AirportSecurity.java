@@ -1,4 +1,4 @@
-package com;
+package parkinglotsystem.observer;
 
 public class AirportSecurity implements IObservable {
     private String parkingLotStatus;
