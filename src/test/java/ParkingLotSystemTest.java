@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import parkinglotsystem.enumclass.DriverType;
 import parkinglotsystem.exception.ParkingLotException;
 import parkinglotsystem.model.Vehicle;
 import parkinglotsystem.observer.AirportSecurity;
@@ -198,5 +199,25 @@ public class ParkingLotSystemTest {
         parkingLotSystem.unPark(vehicle3);
         String numberInParkingLot = parkingLotSystem.getMyCarParkingNumber(vehicle2);
         Assert.assertEquals("P303", numberInParkingLot);
+    }
+
+    //TEST CASE 10.1 AND USE CASE-10
+    @Test
+    public void givenVehicle_WhenHandicapDriverWantAttendant_ShouldGiveNearestFreeSpace() throws ParkingLotException {
+        int numberOfCars = 9;
+        parkingLotSystem = new ParkingLotSystem(owner, attendant, parkingLot, availableLot);
+        parkingLotSystem.createParkingLot();
+        parkingLotSystem.addObserver(owner);
+        Vehicle vehicle2 = new Vehicle("55", "Thur",DriverType.HANDICAP_DRIVER);
+        parkingLotSystem.park(vehicle2);
+        Vehicle vehicle3 = new Vehicle("75", "Thur", DriverType.NORMAL_DRIVER);
+        parkingLotSystem.park(vehicle3);
+        for (int i = 0; i < numberOfCars; i++) {
+            Vehicle vehicle = new Vehicle(Integer.toString(i), "BMW", Vehicle.DriverType.NORMAL);
+            parkingLotSystem.park(vehicle);
+        }
+        parkingLotSystem.unPark(vehicle3);
+        String numberInParkingLot = parkingLotSystem.getMyCarParkingNumber(vehicle2);
+        Assert.assertEquals("P101", numberInParkingLot);
     }
 }
