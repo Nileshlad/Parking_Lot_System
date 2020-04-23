@@ -2,6 +2,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import parkinglotsystem.enumclass.DriverType;
+import parkinglotsystem.enumclass.VehicleDetails;
 import parkinglotsystem.enumclass.VehicleSize;
 import parkinglotsystem.exception.ParkingLotException;
 import parkinglotsystem.model.Vehicle;
@@ -10,6 +11,7 @@ import parkinglotsystem.observer.Owner;
 import parkinglotsystem.service.ParkingLotSystem;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 public class ParkingLotSystemTest {
@@ -160,4 +162,14 @@ public class ParkingLotSystemTest {
         Assert.assertTrue(parkingLotSystem.parkVehicle(parkedVehicle));
     }
 
+    //TEST CASE 12.1 AND USE CASE-12
+    @Test
+    public void givenVehicle_whenWhiteVehiclesAreParked_shouldReturnThatVehicles() {
+        Vehicle parkedVehicle = new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL, "White");
+        Vehicle parkedVehicle1 = new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL, "Green");
+        parkingLotSystem.parkVehicle(parkedVehicle);
+        parkingLotSystem.parkVehicle(parkedVehicle1);
+        List<Vehicle> vehicleList = parkingLotSystem.getCarByDetails(VehicleDetails.WHITE);
+        Assert.assertEquals(vehicleList.get(0), parkedVehicle);
+    }
 }

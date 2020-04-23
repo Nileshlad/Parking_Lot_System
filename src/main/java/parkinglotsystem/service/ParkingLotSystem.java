@@ -1,6 +1,7 @@
 package parkinglotsystem.service;
 
 import parkinglotsystem.enumclass.DriverType;
+import parkinglotsystem.enumclass.VehicleDetails;
 import parkinglotsystem.exception.ParkingLotException;
 import parkinglotsystem.model.Vehicle;
 import parkinglotsystem.observer.AirportSecurity;
@@ -205,5 +206,23 @@ public class ParkingLotSystem {
         if (!parkedVehicleList.isEmpty())
             return parkedVehicleList;
         throw new ParkingLotException("No such vehicle in lot", ParkingLotException.ExceptionType.NO_SUCH_VEHICLE);
+    }
+
+    //To police rule of car by detail
+    public List<Vehicle> getCarByDetails(VehicleDetails... vehicleDetails) {
+        List<Vehicle> sortedVehicleByDetails = new ArrayList<>();
+        List<Vehicle> allParkedVehicle = getAllParkedVehicle();
+        allParkedVehicle.stream()
+                .filter(parkingSlot -> getFilteredByCarDetails(parkingSlot, vehicleDetails)).
+                forEach(sortByDetails -> sortedVehicleByDetails.add(sortByDetails));
+        return checkParkedVehicleList(sortedVehicleByDetails);
+    }
+
+    //to police rule of car by detail of filter the data
+    private boolean getFilteredByCarDetails(Vehicle parkedVehicle, VehicleDetails[] carDetails) {
+        for (int index = 0; index < carDetails.length; index++)
+            if (!parkedVehicle.toString().toLowerCase().contains(carDetails[index].toString().toLowerCase()))
+                return false;
+        return true;
     }
 }
