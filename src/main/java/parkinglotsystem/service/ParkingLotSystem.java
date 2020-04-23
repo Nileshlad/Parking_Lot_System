@@ -1,5 +1,7 @@
 package parkinglotsystem.service;
 
+import parkinglotsystem.enumclass.DriverType;
+import parkinglotsystem.enumclass.VehicleSize;
 import parkinglotsystem.observer.IObservable;
 import parkinglotsystem.observer.Owner;
 import parkinglotsystem.exception.ParkingLotException;
@@ -44,7 +46,7 @@ public class ParkingLotSystem {
     }
 
     //set status
-    public void setStatus(String isFull) {
+    public void setStatus(String is_full) {
         this.is_full = is_full;
         for (IObservable observable : this.observableList) {
             observable.update(this.is_full);
@@ -52,7 +54,7 @@ public class ParkingLotSystem {
     }
 
     //park method
-    public void park(Vehicle vehicle) throws ParkingLotException {
+    public void park(Vehicle vehicle, DriverType handicapDriver, VehicleSize smallVehicle) throws ParkingLotException {
         if (parkingLot.size() < PARKING_LOT_CAPACITY) {
             parkingLot.put(vehicle.getVehicleId(), vehicle);
             chargeVehicle(vehicle);
@@ -129,5 +131,36 @@ public class ParkingLotSystem {
         return totalCharges;
     }
 
+    private boolean isParkingSlotEmpty() {
+        if (parkingLots.entrySet().stream()
+                .filter(parkingSlot -> parkingSlot.getValue().containsValue(null))
+                .count() > 0) {
+            this.parkingStatus = false;
+            parkingStatusObserver.notifyObservers(parkingStatus);
+            return !parkingStatus;
+        }
+        this.parkingStatus = true;
+        parkingStatusObserver.notifyObservers(parkingStatus);
+        return !parkingStatus;
+    }
+
+    //park vehicle
+    public boolean parkVehicle(Vehicle vehicle) {
+        if (isVehicleParked(vehicle)) throw new ParkingLotException("Vehicle already parked"
+                , ParkingLotException.ExceptionType.VEHICLE_NOT_PARKED);
+        if (isParkingSlotEmpty()) {
+            return vehicle.driverType.getVehicleParked(vehicle, this);
+        }
+        throw new ParkingLotException("Parking lot is full", ParkingLotException.ExceptionType.PARKING_LOT_IS_FULL);
+    }
+
+    //METHOD FOR FIND VEHICLE
+    public boolean getVehicle(Vehicle vehicle) {
+        if (list1.contains(vehicle))
+            return true;
+        else if (list2.contains(vehicle))
+            return true;
+        return false;
+    }
 
 }
