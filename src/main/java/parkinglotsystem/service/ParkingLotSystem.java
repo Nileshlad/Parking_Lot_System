@@ -39,7 +39,6 @@ public class ParkingLotSystem {
    }
 
 
-
     //observe method use case-5
     public void addObserver(IObservable iObservable) {
         this.observableList.add(iObservable);

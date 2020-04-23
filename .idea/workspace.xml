@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0edaba8d-48a2-4f40-b05e-c2c39e6de2f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parkinglotsystem/enumclass/VehicleSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglotsystem/enumclass/VehicleSize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parkinglotsystem/exception/ParkingLotException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglotsystem/exception/ParkingLotException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parkinglotsystem/service/ParkingLotSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglotsystem/service/ParkingLotSystem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ParkingLotSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ParkingLotSystemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/parkinglotsystem/service/Attendant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglotsystem/service/Attendant.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

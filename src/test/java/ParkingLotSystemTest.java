@@ -10,6 +10,9 @@ import parkinglotsystem.service.ParkingLotSystem;
 
 import java.util.LinkedHashMap;
 
+import static parkinglotsystem.enumclass.DriverType.HANDICAP_DRIVER;
+import static parkinglotsystem.enumclass.VehicleSize.SMALL_VEHICLE;
+
 
 public class ParkingLotSystemTest {
 
