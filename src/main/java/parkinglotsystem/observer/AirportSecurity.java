@@ -1,18 +1,9 @@
 package parkinglotsystem.observer;
 
 public class AirportSecurity implements IObservable {
-    private String parkingLotStatus;
+    public static boolean securityStatus;
 
-    @Override
-    public void update(Object status) {
-        this.setParkingLotStatus((String) status);
-    }
-
-    public String getParkingLotStatus() {
-        return parkingLotStatus;
-    }
-
-    public void setParkingLotStatus(String isFull) {
-        this.parkingLotStatus = isFull;
+    public void updateStatus(boolean status) {
+        securityStatus = status;
     }
 }
