@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0edaba8d-48a2-4f40-b05e-c2c39e6de2f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parkinglotsystem/service/Attendant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglotsystem/service/Attendant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/ParkingLotSystemTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/ParkingLotSystemTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/default-package.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/parkinglotsystem/enumclass/DriverType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglotsystem/enumclass/DriverType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/parkinglotsystem/model/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglotsystem/model/Vehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/parkinglotsystem/service/ParkingLotSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parkinglotsystem/service/ParkingLotSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ParkingLotSystemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ParkingLotSystemTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,13 +69,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.ParkingLotSystemTest">
-    <configuration name="ParkingLotSystemTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ParkingLotSystemTest.givenVehicle_whenDriverIsHandicap_shouldParkedAtNearestSpot">
+    <configuration name="ParkingLotSystemTest.givenAVehicles_WhenParkingLotHasSpaceAgain_ShouldInformToParkingLotOwner" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenAVehicles_WhenParkingLotHasSpaceAgain_ShouldInformToParkingLotOwner&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -84,12 +90,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ParkingLotSystemTest.givenAVehicle_WhenParked_ShouldReturnTrue" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ParkingLotSystemTest.givenVehicle_whenCarIsUnparked_shouldChangeTheStatusOfParkingLotToEmpty" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenAVehicle_WhenParked_ShouldReturnTrue&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenVehicle_whenCarIsUnparked_shouldChangeTheStatusOfParkingLotToEmpty&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -104,12 +110,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ParkingLotSystemTest.givenVehicle_WhenOwnerWantAttendant_ShouldEvenlyDistributeCar" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ParkingLotSystemTest.givenVehicle_whenDriverIsHandicap_shouldParkedAtNearestSpot" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenVehicle_WhenOwnerWantAttendant_ShouldEvenlyDistributeCar&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenVehicle_whenDriverIsHandicap_shouldParkedAtNearestSpot&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -124,12 +130,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ParkingLotSystemTest.givenVehicle_WhenPark_ShouldReturnCharges" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ParkingLotSystemTest.givenVehicle_whenDriverWantToUnpark_ShouldReturnParkedDateAndTimeToOwner" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenVehicle_WhenPark_ShouldReturnCharges&quot; --debug" />
+        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenVehicle_whenDriverWantToUnpark_ShouldReturnParkedDateAndTimeToOwner&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -144,12 +150,12 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ParkingLotSystemTest.givenVehicle_WhenWantToFindCar_ShouldNumberInParkingLot" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ParkingLotSystemTest.givenVehicles_whenLotIsEmpty_shouldAbleToParkEvenly" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenVehicle_WhenWantToFindCar_ShouldNumberInParkingLot&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ParkingLotSystemTest.givenVehicles_whenLotIsEmpty_shouldAbleToParkEvenly&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -166,11 +172,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ParkingLotSystemTest" />
-        <item itemvalue="Gradle.ParkingLotSystemTest.givenAVehicle_WhenParked_ShouldReturnTrue" />
-        <item itemvalue="Gradle.ParkingLotSystemTest.givenVehicle_WhenOwnerWantAttendant_ShouldEvenlyDistributeCar" />
-        <item itemvalue="Gradle.ParkingLotSystemTest.givenVehicle_WhenPark_ShouldReturnCharges" />
-        <item itemvalue="Gradle.ParkingLotSystemTest.givenVehicle_WhenWantToFindCar_ShouldNumberInParkingLot" />
+        <item itemvalue="Gradle.ParkingLotSystemTest.givenVehicle_whenDriverIsHandicap_shouldParkedAtNearestSpot" />
+        <item itemvalue="Gradle.ParkingLotSystemTest.givenVehicles_whenLotIsEmpty_shouldAbleToParkEvenly" />
+        <item itemvalue="Gradle.ParkingLotSystemTest.givenVehicle_whenDriverWantToUnpark_ShouldReturnParkedDateAndTimeToOwner" />
+        <item itemvalue="Gradle.ParkingLotSystemTest.givenVehicle_whenCarIsUnparked_shouldChangeTheStatusOfParkingLotToEmpty" />
+        <item itemvalue="Gradle.ParkingLotSystemTest.givenAVehicles_WhenParkingLotHasSpaceAgain_ShouldInformToParkingLotOwner" />
       </list>
     </recent_temporary>
   </component>

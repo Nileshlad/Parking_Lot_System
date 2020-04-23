@@ -1,140 +1,97 @@
 package parkinglotsystem.service;
 
 import parkinglotsystem.enumclass.DriverType;
-import parkinglotsystem.enumclass.VehicleSize;
-import parkinglotsystem.observer.IObservable;
-import parkinglotsystem.observer.Owner;
 import parkinglotsystem.exception.ParkingLotException;
 import parkinglotsystem.model.Vehicle;
+import parkinglotsystem.observer.AirportSecurity;
+import parkinglotsystem.observer.Owner;
+import parkinglotsystem.observer.ParkingStatusObserver;
 
+import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class ParkingLotSystem {
+
     //constant
-     int PARKING_LOT_CAPACITY = 2;
-     int CHARGES_PER_HOUR = 10;
-
-    //variable
-    private String is_full;
-    private int numberOfSlot = 4;
+    private final int PARKING_LOT_CAPACITY;
+    private final int NUMBER_OF_LOTS;
+    private final int PARKING_ROW_CAPACITY;
+    private final static String parkingAttendant = "xyz";
 
 
+    //class
+    Owner parkingLotOwner = new Owner();
+    AirportSecurity airportSecurity = new AirportSecurity();
+    ParkingStatusObserver parkingStatusObserver = new ParkingStatusObserver();
 
-    LinkedHashMap<String, Vehicle> parkingLot = null;
-    LinkedHashMap<String, Integer> availableLot = null;
+    private Map<Integer, TreeMap<Integer, Vehicle>> parkingLots = new TreeMap<>();
+    private boolean parkingStatus;
 
-    private List<IObservable> observableList = new ArrayList<>();
-    Owner owner = null;
-    Object attendant = null;
+    //number of lots and capacity
+    public ParkingLotSystem(int capacity, int numberOfLots) {
+        PARKING_LOT_CAPACITY = capacity;
+        NUMBER_OF_LOTS = numberOfLots;
+        PARKING_ROW_CAPACITY = PARKING_LOT_CAPACITY / NUMBER_OF_LOTS;
+        IntStream.range(1, NUMBER_OF_LOTS + 1)
+                .forEach(i -> parkingLots.put(i, getNullTreeMap()));
 
-    //constructor
-    public ParkingLotSystem(Owner owner, Attendant attendant, LinkedHashMap parkingLot, LinkedHashMap availableLot) {
-        this.owner = owner;
-        this.attendant = attendant;
-        this.parkingLot = parkingLot;
-        this.availableLot = availableLot ;
+        parkingStatusObserver.registerObserver(parkingLotOwner);
+        parkingStatusObserver.registerObserver(airportSecurity);
     }
 
-    //overloading method as owner and attendant
-    public ParkingLotSystem(Owner owner, Object attendant) {
-        this.owner = owner;
-        this.attendant = attendant;
-   }
-
-
-    //observe method use case-5
-    public void addObserver(IObservable iObservable) {
-        this.observableList.add(iObservable);
+    private TreeMap<Integer, Vehicle> getNullTreeMap() {
+        TreeMap<Integer, Vehicle> parkingSpots = new TreeMap<>();
+        IntStream.range(1, PARKING_ROW_CAPACITY + 1).forEach(i -> parkingSpots.put(i, null));
+        return parkingSpots;
     }
 
-    //set status
-    public void setStatus(String is_full) {
-        this.is_full = is_full;
-        for (IObservable observable : this.observableList) {
-            observable.update(this.is_full);
+    //parked vehicle method
+    public boolean parkVehicle(Vehicle vehicle) {
+        if (isVehicleParked(vehicle)) throw new ParkingLotException("Vehicle already parked"
+                , ParkingLotException.ExceptionType.VEHICLE_NOT_PARKED);
+        if (isParkingSlotEmpty()) {
+            return vehicle.driverType.getVehicleParked(vehicle, this);
         }
+        throw new ParkingLotException("Parking lot is full", ParkingLotException.ExceptionType.LOT_FULL);
     }
 
-    //park method
-    public void park(Vehicle vehicle) throws ParkingLotException {
-        owner.isAvailable(parkingLot, PARKING_LOT_CAPACITY);
-        attendant.park(parkingLot, vehicle, availableLot);
-        if (!parkingLot.containsValue(null))
-            setStatus("Full");
-    }
-
-    //unparked method
-    public void unPark(Vehicle vehicle) throws ParkingLotException {
-        owner.isPresent(parkingLot, vehicle);
-        attendant.UnPark(parkingLot, vehicle, availableLot);
-        if (parkingLot.containsValue(null)) {
-            setStatus("Have Space");
+    //number of lot and spot
+    public boolean getSpotForNormalDriver(Vehicle vehicle) {
+        if (vehicle.lotNo == 0 || vehicle.spotNo == 0) {
+            int parkingLot = this.getParkingLot();
+            int spotNumber = this.getEmptySpot(parkingLot);
+            vehicle.lotNo = parkingLot;
+            vehicle.spotNo = spotNumber;
+            vehicle.setParkedTime(LocalDateTime.now());
         }
+        vehicle.attendantName = parkingAttendant;
+        parkingLots.get(vehicle.lotNo).put(vehicle.spotNo, vehicle);
+        isParkingSlotEmpty();
+        return true;
     }
 
-    //vehicle parked method
-    public boolean isVehicleParked(Vehicle vehicle) {
-        if (parkingLot.containsKey(vehicle.getVehicleId()))
-            return true;
-        return false;
-    }
-
-    //vehicle unparked method
-    public boolean isVehicleUnParked(Vehicle vehicle) {
-        if (!parkingLot.containsKey(vehicle.getVehicleId()))
-            return true;
-        return false;
-    }
-
-    //create parking lot
-    public void createParkingLot() {
-        int counter = 1, index = 0, slot = 1, length = 0, slotCapacity = 0;
-        while (index != parkingLotCapacity) {
-            slotCapacity = parkingLotCapacity / numberOfSlot;
-                if (parkingLotCapacity % numberOfSlot != 0) {
-                    slotCapacity += 1;
-                }
-            if (counter == slotCapacity + 1) {
-                availableLot.put("P" + Integer.toString(slot), counter - 1);
-                counter = 1;
-                slot++;
-            }
-            String number1 = Integer.toString(counter);
-            length = number1.length();
-            if (length == 1) {
-                number1 = "0" + number1;
-            }
-            String key = "P" + Integer.toString(slot) + number1;
-            parkingLot.put(key, null);
-            index++;
-            counter++;
-            if (slot == numberOfSlot)
-                availableLot.put("P" + Integer.toString(slot), counter - 1);
+    //spot of handicap diver method
+    public boolean getSpotForHandicapDriver(Vehicle vehicle) {
+        vehicle.lotNo = this.getParkingLot();
+        Map.Entry<Integer, Vehicle> spotForHandicap = parkingLots.get(vehicle.lotNo)
+                .entrySet()
+                .stream()
+                .filter(parkingSpot -> parkingSpot.getValue() == null || parkingSpot.getValue().driverType != DriverType.HANDICAP_DRIVER)
+                .findFirst().get();
+        Vehicle parkedVehicle = spotForHandicap.getValue();
+        vehicle.spotNo = spotForHandicap.getKey();
+        vehicle.parkedTime = LocalDateTime.now();
+        parkingLots.get(vehicle.lotNo).put(spotForHandicap.getKey(), vehicle);
+        if (parkedVehicle != null) {
+            parkedVehicle.spotNo = 0;
+            parkedVehicle.lotNo = 0;
+            this.parkVehicle(parkedVehicle);
         }
+        return true;
     }
 
-    //get my car parking number method
-    public int getMyCarParkingNumber(Vehicle vehicle) {
-        public String getMyCarParkingNumber(Vehicle vehicle) {
-            Iterator<String> itr = parkingLot.keySet().iterator();
-            while (itr.hasNext()) {
-                String key = itr.next();
-                if (parkingLot.get(key) == vehicle)
-                return key;
-            }
-            return null;
-        }
-
-    }
-
-    //METHOD FOR CHARGE PARKING VEHICLE
-    public int chargeVehicle(Vehicle vehicle) {
-        int totalCharges = vehicle.getHour() * CHARGES_PER_HOUR;
-        return totalCharges;
-    }
-
-
-    //large vehicle parking spot method
+    //Big vehicle spot method
     public boolean getSpotForLargeVehicle(Vehicle vehicle) {
         int parkingLot = this.getParkingLot();
         int spotNumber = parkingLots.get(parkingLot)
@@ -153,7 +110,100 @@ public class ParkingLotSystem {
         return true;
     }
 
+    //to filter and check the empty space
+    private boolean getFilterLargeEmptySpace(int parkingLot, Map.Entry<Integer, Vehicle> integerParkedVehicleEntry) {
+        Integer emptySpot = integerParkedVehicleEntry.getKey();
+        if (parkingLots.get(parkingLot).get(emptySpot + 1) != null)
+            return false;
+        return true;
+    }
 
-    public boolean getSpotForNormalDriver(Vehicle vehicle) {
+    //return space spot
+    private int getEmptySpot(int parkingLotNumber) {
+        return parkingLots.get(parkingLotNumber)
+                .entrySet().stream()
+                .filter(spotNumber -> spotNumber.getValue() == null)
+                .findFirst().get().getKey();
+    }
+
+    //return parking lot
+    private int getParkingLot() {
+        return parkingLots.entrySet()
+                .stream()
+                .sorted(Comparator.comparing(lots -> lots.getValue()
+                        .entrySet().stream().filter(spot -> spot.getValue() == null).count()))
+                .reduce((first, second) -> second)
+                .orElse(null)
+                .getKey();
+    }
+
+    //unparked method
+    public Vehicle unparkCar(Vehicle vehicle) {
+        if (isVehicleParked(vehicle)) {
+            int carParkedLotNumber = vehicle.lotNo;
+            int carParkedSpotNumber = vehicle.spotNo;
+            LocalDateTime parkedTime = parkingLots.get(carParkedLotNumber).get(carParkedSpotNumber).parkedTime;
+            Owner.parkedDuration = parkedTime;
+            Vehicle unparkedCar = parkingLots.get(carParkedLotNumber).get(carParkedSpotNumber);
+            parkingLots.get(carParkedLotNumber).put(carParkedSpotNumber, null);
+            isParkingSlotEmpty();
+            return unparkedCar;
+        }
+        throw new ParkingLotException("Car is not parked", ParkingLotException.ExceptionType.VEHICLE_NOT_PARKED);
+    }
+
+    //parking slot empty
+    private boolean isParkingSlotEmpty() {
+        if (parkingLots.entrySet().stream()
+                .filter(parkingSlot -> parkingSlot.getValue().containsValue(null))
+                .count() > 0) {
+            this.parkingStatus = false;
+            parkingStatusObserver.notifyObservers(parkingStatus);
+            return !parkingStatus;
+        }
+        this.parkingStatus = true;
+        parkingStatusObserver.notifyObservers(parkingStatus);
+        return !parkingStatus;
+    }
+
+    //to vehicle parked method
+    public boolean isVehicleParked(Vehicle vehicle) {
+        if (parkingLots.entrySet()
+                .stream()
+                .filter(parkingLot -> parkingLot.getValue().containsValue(vehicle))
+                .count() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    //list of parked vehicle
+    public List<Vehicle> getAllParkedVehicle(int... lotNumbers) {
+        List<Vehicle> allParkedVehicle = new ArrayList<>();
+        parkingLots.entrySet()
+                .stream().filter(parkingLot -> getFilterByLotNumber(parkingLot, lotNumbers))
+                .forEach(integerTreeMapEntry -> integerTreeMapEntry.getValue().entrySet().stream()
+                        .filter(slotNumber -> slotNumber.getValue() != null)
+                        .forEach(sortByDetails ->
+                                allParkedVehicle.add(sortByDetails.getValue())));
+        return checkParkedVehicleList(allParkedVehicle);
+    }
+
+    //filter by slot number
+    private boolean getFilterByLotNumber(Map.Entry<Integer, TreeMap<Integer, Vehicle>> parkingLot, int[] lotNumbers) {
+        if (lotNumbers.length == 0) {
+            return true;
+        } else {
+            if (parkingLot.getKey() % lotNumbers[0] == 0)
+                return true;
+        }
+        return false;
+    }
+
+    //list of check parked vehicle list
+    private List<Vehicle> checkParkedVehicleList(List<Vehicle> parkedVehicleList) {
+        if (!parkedVehicleList.isEmpty())
+            return parkedVehicleList;
+        throw new ParkingLotException("No such vehicle in lot", ParkingLotException.ExceptionType.NO_SUCH_VEHICLE);
     }
 }

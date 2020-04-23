@@ -6,6 +6,7 @@ import parkinglotsystem.enumclass.VehicleSize;
 import java.time.LocalDateTime;
 
 public class Vehicle {
+    //variable
     public int lotNo;
     public int spotNo;
     public LocalDateTime parkedTime;
