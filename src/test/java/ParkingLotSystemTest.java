@@ -172,4 +172,5 @@ public class ParkingLotSystemTest {
         List<Vehicle> vehicleList = parkingLotSystem.getCarByDetails(VehicleDetails.WHITE);
         Assert.assertEquals(vehicleList.get(0), parkedVehicle);
     }
+
 }
