@@ -134,6 +134,26 @@ public class ParkingLotSystem {
     }
 
 
+    //large vehicle parking spot method
+    public boolean getSpotForLargeVehicle(ParkedVehicle vehicle) {
+        int parkingLot = this.getParkingLot();
+        int spotNumber = parkingLots.get(parkingLot)
+                .entrySet()
+                .stream()
+                .filter(spotNumberForLargeVehicle -> spotNumberForLargeVehicle.getValue() == null)
+                .filter(integerParkedVehicleEntry -> getFilterLargeEmptySpace(parkingLot, integerParkedVehicleEntry))
+                .findFirst()
+                .get()
+                .getKey();
+        vehicle.lotNo = parkingLot;
+        if (spotNumber != PARKING_LOT_CAPACITY)
+            spotNumber += 1;
+        vehicle.spotNo = spotNumber;
+        this.getSpotForNormalDriver(vehicle);
+        return true;
+    }
 
 
+    public boolean getSpotForNormalDriver(Vehicle vehicle) {
+    }
 }
