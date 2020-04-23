@@ -173,4 +173,16 @@ public class ParkingLotSystemTest {
         Assert.assertEquals(vehicleList.get(0), parkedVehicle);
     }
 
+    //TEST CASE 13.1 AND USE CASE-13
+    @Test
+    public void givenVehicle_whenItIsBlueToyota_shouldReturnThatVehicles() {
+        Vehicle parkedVehicle = new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL, "Blue");
+        parkedVehicle.carManufacturer = "Maruti";
+        Vehicle parkedVehicle1 = new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL, "Blue");
+        parkedVehicle1.carManufacturer = "Toyoto";
+        parkingLotSystem.parkVehicle(parkedVehicle);
+        parkingLotSystem.parkVehicle(parkedVehicle1);
+        List<Vehicle> vehicleList = parkingLotSystem.getCarByDetails(VehicleDetails.TOYOTO, VehicleDetails.BLUE);
+        Assert.assertEquals(vehicleList.get(0), parkedVehicle1);
+    }
 }
