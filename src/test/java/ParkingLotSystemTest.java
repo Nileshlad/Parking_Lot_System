@@ -6,7 +6,6 @@ import parkinglotsystem.exception.ParkingLotException;
 import parkinglotsystem.model.Vehicle;
 import parkinglotsystem.observer.AirportSecurity;
 import parkinglotsystem.observer.Owner;
-import parkinglotsystem.service.Attendant;
 import parkinglotsystem.service.ParkingLotSystem;
 
 import java.util.LinkedHashMap;

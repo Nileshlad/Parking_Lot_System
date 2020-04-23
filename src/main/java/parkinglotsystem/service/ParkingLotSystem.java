@@ -135,7 +135,7 @@ public class ParkingLotSystem {
 
 
     //large vehicle parking spot method
-    public boolean getSpotForLargeVehicle(ParkedVehicle vehicle) {
+    public boolean getSpotForLargeVehicle(Vehicle vehicle) {
         int parkingLot = this.getParkingLot();
         int spotNumber = parkingLots.get(parkingLot)
                 .entrySet()
