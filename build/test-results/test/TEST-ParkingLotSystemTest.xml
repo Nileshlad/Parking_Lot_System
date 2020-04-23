@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ParkingLotSystemTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-23T19:04:00" hostname="blackhawkkk" time="0.067">
+<testsuite name="ParkingLotSystemTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-23T19:33:27" hostname="blackhawkkk" time="0.072">
   <properties/>
-  <testcase name="givenVehicle_whenDriverIsHandicap_shouldParkedAtNearestSpot" classname="ParkingLotSystemTest" time="0.067"/>
+  <testcase name="givenVehicle_whenItisLarge_shouldAbleToPark" classname="ParkingLotSystemTest" time="0.072"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

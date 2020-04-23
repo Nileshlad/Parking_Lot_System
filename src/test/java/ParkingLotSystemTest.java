@@ -146,4 +146,18 @@ public class ParkingLotSystemTest {
         Assert.assertEquals(1, parkedVehicle1.spotNo);
     }
 
+    //TEST CASE 11.1 AND USE CASE-11
+    @Test
+    public void givenVehicle_whenItisLarge_shouldAbleToPark() {
+        ParkingLotSystem parkingLotSystem = new ParkingLotSystem(10, 1);
+        Vehicle parkedVehicle = new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.LARGE);
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL));
+        Vehicle parkedVehicle1 = new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL);
+        parkingLotSystem.parkVehicle(parkedVehicle1);
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL));
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL));
+        parkingLotSystem.unparkCar(parkedVehicle1);
+        Assert.assertTrue(parkingLotSystem.parkVehicle(parkedVehicle));
+    }
+
 }
