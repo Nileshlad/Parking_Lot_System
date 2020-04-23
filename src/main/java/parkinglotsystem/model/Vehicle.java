@@ -3,38 +3,47 @@ package parkinglotsystem.model;
 import parkinglotsystem.enumclass.DriverType;
 import parkinglotsystem.enumclass.VehicleSize;
 
-import java.awt.*;
-import java.sql.Driver;
+import java.time.LocalDateTime;
 
 public class Vehicle {
+    public int lotNo;
+    public int spotNo;
+    public LocalDateTime parkedTime;
+    public DriverType driverType;
+    public String carColor;
+    public String plateNumber;
+    public String carManufacturer;
+    public String attendantName;
+    public VehicleSize vehicleSize;
 
 
-    private final Color color;
-    private Driver driver;
-    private String vehicleId;
-    private String name;
-    private VehicleSize vehicleSize;
-
-    public Vehicle(String id, String name, Driver driver, VehicleSize vehicleSize, Color color) {
-        this.vehicleId = id;
-        this.name = name;
-        this.driver = driver;
+    public Vehicle(DriverType driverType, VehicleSize vehicleSize) {
+        this.driverType = driverType;
         this.vehicleSize = vehicleSize;
-        this.color = color;
     }
 
-    public Vehicle(String s, String thur, DriverType handicapDriver) {
+    public Vehicle(DriverType driverType, VehicleSize vehicleSize, String carColor) {
+        this.driverType = driverType;
+        this.carColor = carColor;
+        this.vehicleSize = vehicleSize;
     }
 
-    public Driver getDriver() {
-        return driver;
+    public void setParkedTime(LocalDateTime parkedTime) {
+        this.parkedTime = parkedTime;
     }
 
-    public Color getColor() {
-        return color;
-    }
+    @Override
+    public String toString() {
+        return "ParkedVehicle{" +
+                "lotNo=" + lotNo +
+                ", spotNo=" + spotNo +
+                ", parkedTime=" + parkedTime +
+                ", driver=" + driverType +
+                ", carColor='" + carColor + '\'' +
+                ", plateNumber='" + plateNumber + '\'' +
+                ", carManufacturer='" + carManufacturer + '\'' +
+                ", attendantName='" + attendantName + '\'' +
+                '}';
 
-    public VehicleSize getVehicleType() {
-        return vehicleSize;
     }
 }
