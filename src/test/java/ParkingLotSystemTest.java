@@ -185,4 +185,16 @@ public class ParkingLotSystemTest {
         List<Vehicle> vehicleList = parkingLotSystem.getCarByDetails(VehicleDetails.TOYOTO, VehicleDetails.BLUE);
         Assert.assertEquals(vehicleList.get(0), parkedVehicle1);
     }
+
+    //TEST CASE 14.1 AND USE CASE-14
+    @Test
+    public void givenVehicles_whenItIsNotBMW_shouldThrowException() {
+        Vehicle parkedVehicle = new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL, "Blue");
+        parkedVehicle.carManufacturer = "Toyoto";
+        try {
+            parkingLotSystem.getCarByDetails(VehicleDetails.BMW);
+        } catch (ParkingLotException p) {
+            Assert.assertEquals(ParkingLotException.ExceptionType.NO_SUCH_VEHICLE, p.type);
+        }
+    }
 }

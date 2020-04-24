@@ -225,4 +225,15 @@ public class ParkingLotSystem {
                 return false;
         return true;
     }
+
+    //to list get handicap in car lot
+    public List<Vehicle> getHandicapCarInLot(int... rowNo) {
+        List<Vehicle> sortedVehicleByDetails = new ArrayList<>();
+        List<Vehicle> allParkedVehicle = getAllParkedVehicle(rowNo[0]);
+        allParkedVehicle.stream()
+                .filter(parkingSlot -> parkingSlot.driverType.toString().contains("HANDICAP_DRIVER")).
+                forEach(sortByDetails -> sortedVehicleByDetails.add(sortByDetails));
+        return sortedVehicleByDetails;
+    }
+
 }
