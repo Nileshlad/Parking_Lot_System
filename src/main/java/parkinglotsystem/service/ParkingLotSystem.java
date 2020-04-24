@@ -236,7 +236,7 @@ public class ParkingLotSystem {
         return checkParkedVehicleList(sortedVehicleByTime);
     }
 
-    //to list get handicap in car lot
+    //to list get handicap in car lot and row B and D
     public List<Vehicle> getHandicapCarInLot(int... rowNo) {
         List<Vehicle> sortedVehicleByDetails = new ArrayList<>();
         List<Vehicle> allParkedVehicle = getAllParkedVehicle(rowNo[0]);
