@@ -178,7 +178,7 @@ public class ParkingLotSystem {
         return false;
     }
 
-    //list of parked vehicle
+    //list of parked all vehicle
     public List<Vehicle> getAllParkedVehicle(int... lotNumbers) {
         List<Vehicle> allParkedVehicle = new ArrayList<>();
         parkingLots.entrySet()

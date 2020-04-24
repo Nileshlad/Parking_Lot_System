@@ -222,4 +222,20 @@ public class ParkingLotSystemTest {
         List<Vehicle> sortedVehicle = parkingLotSystem.getHandicapCarInLot(2);
         Assert.assertEquals(3, sortedVehicle.size());
     }
+
+    //  TEST CASE 17.1 AND USE CASE-17
+    @Test
+    public void givenVehicles_whenThatAreParked_shouldReturnIt() {
+        ParkingLotSystem parkingLotSystem = new ParkingLotSystem(8, 4);
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.HANDICAP_DRIVER, VehicleSize.SMALL, "blue"));
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL));
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL));
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL));
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.HANDICAP_DRIVER, VehicleSize.SMALL, "blue1"));
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.HANDICAP_DRIVER, VehicleSize.SMALL, "blue2"));
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.HANDICAP_DRIVER, VehicleSize.SMALL, "blue3"));
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL));
+        List<Vehicle> sortedVehicle = parkingLotSystem.getAllParkedVehicle();
+        Assert.assertEquals(8, sortedVehicle.size());
+    }
 }
