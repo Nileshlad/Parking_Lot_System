@@ -197,4 +197,13 @@ public class ParkingLotSystemTest {
             Assert.assertEquals(ParkingLotException.ExceptionType.NO_SUCH_VEHICLE, p.type);
         }
     }
+
+    //TEST CASE 15.1 AND USE CASE-15
+    @Test
+    public void givenVehicles_whenItIsParkedWithin30Min_shouldReturnThatVehicle() {
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL));
+        parkingLotSystem.parkVehicle(new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL));
+        List<Vehicle> vehicleList = parkingLotSystem.getVehicleByTime(30);
+        Assert.assertEquals(2, vehicleList.size());
+    }
 }

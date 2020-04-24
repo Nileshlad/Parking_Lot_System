@@ -21,7 +21,7 @@ public class ParkingLotSystem {
     private final static String parkingAttendant = "xyz";
 
 
-    //class
+    //object of observe class
     Owner parkingLotOwner = new Owner();
     AirportSecurity airportSecurity = new AirportSecurity();
     ParkingStatusObserver parkingStatusObserver = new ParkingStatusObserver();
@@ -226,6 +226,16 @@ public class ParkingLotSystem {
         return true;
     }
 
+    //to
+    public List<Vehicle> getVehicleByTime(int time) {
+        List<Vehicle> sortedVehicleByTime = new ArrayList<>();
+        List<Vehicle> allParkedVehicle = getAllParkedVehicle();
+        allParkedVehicle.stream()
+                .filter(parkedVehicle -> parkedVehicle.parkedTime.isAfter(LocalDateTime.now().minusMinutes(time)))
+                .forEach(sortByDetails -> sortedVehicleByTime.add(sortByDetails));
+        return checkParkedVehicleList(sortedVehicleByTime);
+    }
+
     //to list get handicap in car lot
     public List<Vehicle> getHandicapCarInLot(int... rowNo) {
         List<Vehicle> sortedVehicleByDetails = new ArrayList<>();
@@ -235,5 +245,6 @@ public class ParkingLotSystem {
                 forEach(sortByDetails -> sortedVehicleByDetails.add(sortByDetails));
         return sortedVehicleByDetails;
     }
+
 
 }
