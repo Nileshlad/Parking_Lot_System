@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ParkingLotSystemTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-04-24T12:31:04" hostname="blackhawkkk" time="0.078">
+<testsuite name="ParkingLotSystemTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2020-04-24T12:35:51" hostname="blackhawkkk" time="0.284">
   <properties/>
-  <testcase name="givenVehicles_whenThatAreParked_shouldReturnIt" classname="ParkingLotSystemTest" time="0.078"/>
+  <testcase name="givenVehicle_whenParkingLotIsEmpty_shouldInformAirportSecurity" classname="ParkingLotSystemTest" time="0.064"/>
+  <testcase name="givenVehicle_whenDriverUnparkingWrongVehicle_shouldReturnException" classname="ParkingLotSystemTest" time="0.002"/>
+  <testcase name="givenVehicle_whenWhiteVehiclesAreParked_shouldReturnThatVehicles" classname="ParkingLotSystemTest" time="0.031"/>
+  <testcase name="givenVehicle_whenParkingLotIsFull_shouldInformOwner" classname="ParkingLotSystemTest" time="0.001"/>
+  <testcase name="givenAVehicle_WhenParked_ShouldReturnTrue" classname="ParkingLotSystemTest" time="0.0"/>
+  <testcase name="givenVehicle_whenDriverWantToUnpark_ShouldReturnParkedDateAndTimeToOwner" classname="ParkingLotSystemTest" time="0.001"/>
+  <testcase name="givenVehicles_whenItIsNotBMW_shouldThrowException" classname="ParkingLotSystemTest" time="0.0"/>
+  <testcase name="givenVehicle_whenDriverIsHandicap_shouldParkedAtNearestSpot" classname="ParkingLotSystemTest" time="0.009"/>
+  <testcase name="givenVehicle_whenVehicleIsAlreadyParked_shouldThrowException" classname="ParkingLotSystemTest" time="0.001"/>
+  <testcase name="givenVehicles_when_B_and_D_LotHasHandicapVehicle_shouldReturnIt" classname="ParkingLotSystemTest" time="0.062"/>
+  <testcase name="givenVehicle_whenItisLarge_shouldAbleToPark" classname="ParkingLotSystemTest" time="0.008"/>
+  <testcase name="givenVehicle_whenParkingLotIsEmpty_shouldInformOwner" classname="ParkingLotSystemTest" time="0.001"/>
+  <testcase name="givenVehicles_whenLotIsEmpty_shouldAbleToParkEvenly" classname="ParkingLotSystemTest" time="0.017"/>
+  <testcase name="givenVehicles_whenThatAreParked_shouldReturnIt" classname="ParkingLotSystemTest" time="0.004"/>
+  <testcase name="givenAVehicle_WhenUnParked_ShouldReturnFalse" classname="ParkingLotSystemTest" time="0.0"/>
+  <testcase name="givenVehicles_whenItIsParkedWithin30Min_shouldReturnThatVehicle" classname="ParkingLotSystemTest" time="0.004"/>
+  <testcase name="givenVehicle_whenCarIsUnparked_shouldChangeTheStatusOfParkingLotToEmpty" classname="ParkingLotSystemTest" time="0.001"/>
+  <testcase name="givenAVehicles_WhenParkingLotHasSpaceAgain_ShouldInformToParkingLotOwner" classname="ParkingLotSystemTest" time="0.004"/>
+  <testcase name="givenVehicle_whenItIsBlueToyota_shouldReturnThatVehicles" classname="ParkingLotSystemTest" time="0.045"/>
+  <testcase name="givenVehicle_whenParkingLotIsFull_shouldInformAirportSecurity" classname="ParkingLotSystemTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
