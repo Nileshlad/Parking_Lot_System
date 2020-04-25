@@ -29,7 +29,7 @@ public class ParkingLotSystem {
     private Map<Integer, TreeMap<Integer, Vehicle>> parkingLots = new TreeMap<>();
     private boolean parkingStatus;
 
-    //number of lots and capacity
+    //number of row lots and capacity
     public ParkingLotSystem(int capacity, int numberOfLots) {
         PARKING_LOT_CAPACITY = capacity;
         NUMBER_OF_LOTS = numberOfLots;
@@ -47,7 +47,7 @@ public class ParkingLotSystem {
         return parkingSpots;
     }
 
-    //parked vehicle method
+    //parked vehicle method //uc-1//uc-6 decision owner parking
     public boolean parkVehicle(Vehicle vehicle) {
         if (isVehicleParked(vehicle)) throw new ParkingLotException("Vehicle already parked"
                 , ParkingLotException.ExceptionType.VEHICLE_NOT_PARKED);
@@ -138,7 +138,7 @@ public class ParkingLotSystem {
                 .getKey();
     }
 
-    //unparked method
+    //unparked method//uc-8
     public Vehicle unparkCar(Vehicle vehicle) {
         if (isVehicleParked(vehicle)) {
             int carParkedLotNumber = vehicle.lotNo;
@@ -167,7 +167,7 @@ public class ParkingLotSystem {
         return !parkingStatus;
     }
 
-    //to vehicle parked method
+    //to vehicle parked method//uc-6
     public boolean isVehicleParked(Vehicle vehicle) {
         if (parkingLots.entrySet()
                 .stream()
@@ -208,7 +208,7 @@ public class ParkingLotSystem {
         throw new ParkingLotException("No such vehicle in lot", ParkingLotException.ExceptionType.NO_SUCH_VEHICLE);
     }
 
-    //To police rule of car by detail
+    //To police rule of car by detail//UC-11,12
     public List<Vehicle> getCarByDetails(VehicleDetails... vehicleDetails) {
         List<Vehicle> sortedVehicleByDetails = new ArrayList<>();
         List<Vehicle> allParkedVehicle = getAllParkedVehicle();
@@ -226,7 +226,7 @@ public class ParkingLotSystem {
         return true;
     }
 
-    //to
+    //to vehicle time set up method//UC 15
     public List<Vehicle> getVehicleByTime(int time) {
         List<Vehicle> sortedVehicleByTime = new ArrayList<>();
         List<Vehicle> allParkedVehicle = getAllParkedVehicle();
@@ -236,7 +236,7 @@ public class ParkingLotSystem {
         return checkParkedVehicleList(sortedVehicleByTime);
     }
 
-    //to list get handicap in car lot and row B and D
+    //to list get handicap in car lot and row B and D //UC-16
     public List<Vehicle> getHandicapCarInLot(int... rowNo) {
         List<Vehicle> sortedVehicleByDetails = new ArrayList<>();
         List<Vehicle> allParkedVehicle = getAllParkedVehicle(rowNo[0]);

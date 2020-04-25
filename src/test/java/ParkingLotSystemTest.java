@@ -31,7 +31,7 @@ public class ParkingLotSystemTest {
         Assert.assertTrue(parkingLotSystem.parkVehicle(Vehicle));
     }
 
-    //TEST CASE 1.2 AND USE CASE-2
+    //TEST CASE 1.2 AND USE CASE-1
     @Test
     public void givenAVehicle_WhenUnParked_ShouldReturnFalse() {
         Assert.assertFalse(parkingLotSystem.isVehicleParked(Vehicle));
@@ -76,7 +76,6 @@ public class ParkingLotSystemTest {
     public void givenVehicle_whenVehicleIsAlreadyParked_shouldThrowException() throws ParkingLotException {
         Vehicle parkedVehicle = new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL);
         try {
-            parkingLotSystem.parkVehicle(parkedVehicle);
             parkingLotSystem.parkVehicle(parkedVehicle);
         } catch (ParkingLotException e) {
             Assert.assertEquals(ParkingLotException.ExceptionType.VEHICLE_NOT_PARKED, e.type);
@@ -123,7 +122,7 @@ public class ParkingLotSystemTest {
         Assert.assertEquals(minute, Owner.parkedDuration.getMinute());
     }
 
-    //TEST CASE 9.1 AND
+    //TEST CASE 9.1 and USE CASE-9
     @Test
     public void givenVehicles_whenLotIsEmpty_shouldAbleToParkEvenly() throws ParkingLotException {
         ParkingLotSystem parkingLotSystem = new ParkingLotSystem(20, 5);
@@ -162,7 +161,7 @@ public class ParkingLotSystemTest {
         Assert.assertTrue(parkingLotSystem.parkVehicle(parkedVehicle));
     }
 
-    //TEST CASE 12.1 AND USE CASE-12
+    //TEST CASE 12.1 AND USE CASE-12 //BIG VEHICLE
     @Test
     public void givenVehicle_whenWhiteVehiclesAreParked_shouldReturnThatVehicles() {
         Vehicle parkedVehicle = new Vehicle(DriverType.NORMAL_DRIVER, VehicleSize.SMALL, "White");
